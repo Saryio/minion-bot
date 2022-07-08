@@ -26,6 +26,7 @@ struct TimeCommand {
 
 impl CommandType for TimeCommand {
     fn run(&self) -> String {
+        std::process::Command::new("clear").status().unwrap();
         let start = SystemTime::now();
         let since_time_epoch = start
             .duration_since(UNIX_EPOCH)
@@ -40,8 +41,8 @@ impl CommandType for TimeCommand {
 
 pub fn get_command() -> Box<dyn CommandType> {
     let command = Command {
-        name: "time",
-        description: "print the current time in seconds",
+        name: "timestamp",
+        description: "print the current timestamp",
         args: vec![],
     };
 
