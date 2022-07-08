@@ -12,7 +12,10 @@ fn main() {
     build_commands(&mut controller);
     let mut input = String::new();
     ask_command(&mut input, &controller);
-    println!("Minion-B says:\n{}", controller.commands[input.trim()].run());
+    println!(
+        "Minion-B says:\n{}",
+        controller.commands[input.trim()].run()
+    );
 }
 
 fn build_commands(controller: &mut Controller) {
