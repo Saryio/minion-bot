@@ -7,7 +7,7 @@ struct PrintCommand {
 impl CommandType for PrintCommand {
     fn run(&self) -> String {
         std::process::Command::new("clear").status().unwrap();
-        println!("Minion-B says:\nDigite o que quer printar:\n");
+        println!("Minion-B says:\nType what you want to be printed:\n");
         let mut input = String::new();
         std::io::stdin().read_line(&mut input).unwrap();
         std::process::Command::new("clear").status().unwrap();
