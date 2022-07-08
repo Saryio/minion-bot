@@ -38,7 +38,7 @@ fn build_commands(controller: &mut Controller) {
 fn ask_command(input: &mut String, controller: &Controller) {
     println!("Minion-B says:\nSelect your command:\n");
     for command in controller.commands.keys() {
-        println!("{}", command.to_string());
+        println!("{}: {}", command.to_string(), controller.commands[command].get_self().description);
     }
     println!();
     std::io::stdin().read_line(input).unwrap();
