@@ -2,9 +2,11 @@ use std::collections::HashMap;
 
 use command::CommandType;
 use controller::Controller;
+use rust_bot::auto_define;
 mod command;
 mod commands;
 mod controller;
+
 fn main() {
     let mut controller = Controller {
         commands: HashMap::new(),
@@ -19,18 +21,12 @@ fn main() {
 }
 
 fn build_commands(controller: &mut Controller) {
-    // Commands declaration
-    let print = commands::print::get_command();
-    let time = commands::time::get_command();
 
-    // Only vector of commands
-    let mut commands: Vec<Box<dyn CommandType>> = vec![];
+    let mut cmds: Vec<Box<dyn CommandType>> = vec![];
 
-    // Push the commands to the vector
-    commands.push(print);
-    commands.push(time);
+    auto_define!(commands);
 
-    for command in commands {
+    for command in cmds {
         controller.commands.insert(command.get_self().name, command);
     }
 }
